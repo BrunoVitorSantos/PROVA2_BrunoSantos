@@ -166,6 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['confirmar_exclusao']))
 </head>
 <body>
     <div class="container">
+        <h3>Desenvolvido por: Bruno Vitor dos Santos</h3>
         <h2><i class="fas fa-user-times"></i> Excluir Funcionário</h2>
         
         <?php if($sucesso): ?>

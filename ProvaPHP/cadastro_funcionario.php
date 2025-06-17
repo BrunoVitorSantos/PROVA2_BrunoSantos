@@ -61,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="container">
+        <h3>Desenvolvido por: Bruno Vitor dos Santos</h3>
         <h2><i class="fas fa-user-plus"></i> Cadastrar Funcionário</h2>
         
         <?php if(isset($sucesso)): ?>

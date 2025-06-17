@@ -106,12 +106,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Alterar Funcionário</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/geral.css">
 </head>
 <body>
     <div class="container">
+        <h3>Desenvolvido por: Bruno Vitor dos Santos</h3>
         <h2><i class="fas fa-user-edit"></i> Alterar Funcionário</h2>
         
         <?php if($sucesso): ?>
@@ -183,72 +185,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Máscara para telefone
-            $('#telefone').mask('(00) 00000-0000');
+<script>
+    $(document).ready(function() {
+        // ... (outros códigos existentes)
+
+        // Limpa os campos após alteração bem-sucedida
+        <?php if($sucesso): ?>
+            // Limpa o formulário de busca
+            $('#busca_funcionario').val('');
             
-            // Auto-foco no campo de busca
+            // Limpa o formulário de edição
+            $('#editarForm')[0].reset();
+            
+            // Esconde a seção de edição
+            $('.form-section').hide();
+            
+            // Foca no campo de busca novamente
             $('#busca_funcionario').focus();
-            
-            // Validação do formulário
-            $('#editarForm').on('submit', function(e) {
-                let isValid = true;
-                $(this).find('[required]').each(function() {
-                    if (!$(this).val().trim()) {
-                        $(this).css('border-color', 'var(--danger-color)');
-                        isValid = false;
-                    }
-                });
-                
-                if (!isValid) {
-                    e.preventDefault();
-                    alert('Por favor, preencha todos os campos obrigatórios!');
-                }
-            });
-            
-            // Busca de sugestões (AJAX)
-            $('#busca_funcionario').on('input', function() {
-                const termo = $(this).val().trim();
-                if (termo.length >= 2) {
-                    $.ajax({
-                        url: 'buscar_funcionarios.php',
-                        method: 'GET',
-                        data: { termo: termo },
-                        success: function(data) {
-                            const sugestoes = $('#sugestoes');
-                            if (data.length > 0) {
-                                sugestoes.empty().show();
-                                data.forEach(funcionario => {
-                                    sugestoes.append(
-                                        `<div class="sugestao-item" data-id="${funcionario.id_funcionario}">
-                                            ${funcionario.id_funcionario} - ${funcionario.nome_funcionario}
-                                        </div>`
-                                    );
-                                });
-                                
-                                $('.sugestao-item').on('click', function() {
-                                    $('#busca_funcionario').val($(this).text().trim());
-                                    sugestoes.hide();
-                                    $('#buscaForm').submit();
-                                });
-                            } else {
-                                sugestoes.hide();
-                            }
-                        }
-                    });
-                } else {
-                    $('#sugestoes').hide();
-                }
-            });
-            
-            // Esconde sugestões ao clicar fora
-            $(document).on('click', function(e) {
-                if (!$(e.target).closest('#busca_funcionario, #sugestoes').length) {
-                    $('#sugestoes').hide();
-                }
-            });
-        });
-    </script>
+        <?php endif; ?>
+
+        // ... (outros códigos existentes)
+    });
+</script>
 </body>
 </html>

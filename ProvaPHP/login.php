@@ -45,7 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
     <form action="login.php" method="POST">
-        <h3>BRUNO</h3>
+   
         <h2>Login</h2>
         <label for="email">E-mail</label>
         <input type="email" id="email" name="email" required>

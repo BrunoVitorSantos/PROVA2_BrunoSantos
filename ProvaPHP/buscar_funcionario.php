@@ -302,6 +302,7 @@ elseif ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['busca'])) {
 </head>
 <body>
     <div class="container">
+        <h3>Desenvolvido por: Bruno Vitor dos Santos</h3>
         <h2><i class="fas fa-users"></i> Lista de Funcionários</h2>
         
 <div class="action-buttons">
